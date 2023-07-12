@@ -35,8 +35,7 @@ input {
 
 button {
     color: #FDFDFD;
-    /* #AC485A */
-    background-color: blue;
+    background-color: #AC485A;
     border: 0;
     padding: 15px;
     border-radius: 8px;
