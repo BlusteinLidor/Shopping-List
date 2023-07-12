@@ -12,6 +12,8 @@ const shoppingListInDB = ref(database, "shoppingList")
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
 const shoppingListEl = document.getElementById("shopping-list")
+const pickedListEl = document.getElementById("picked-list")
+let isPicked = false
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
@@ -56,9 +58,23 @@ function appendItemToShoppingListEl(item) {
     newEl.textContent = itemValue
     
     newEl.addEventListener("click", function() {
-        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
-        
-        remove(exactLocationOfItemInDB)
+        // remove the item
+        //let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
+        //remove(exactLocationOfItemInDB)
+
+        // make the item go down
+        if(!isPicked){
+            pickedListEl.append(newEl)
+            newEl.style.backgroundColor = "#97A7B3"
+            newEl.style.color = "black"
+            isPicked = true
+        }
+        else{
+            shoppingListEl.append(newEl)
+            newEl.style.backgroundColor = "#FFFDF8"
+            newEl.style.color = "#432000"
+            isPicked = false
+        }
     })
     
     shoppingListEl.append(newEl)
