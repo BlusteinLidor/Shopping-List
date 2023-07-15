@@ -44,6 +44,14 @@ button {
     font-family: 'Rubik', sans-serif;
 }
 
+#clear-all {
+    background-color: #DCE1EB;
+    font-size: 10px;
+    color: #432000;
+    width: 50px;
+    padding: 5px;
+}
+
 button:hover {
     background-color: #432000;
     cursor: pointer;
