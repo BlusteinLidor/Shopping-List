@@ -15,6 +15,7 @@ const addButtonEl = document.getElementById("add-button")
 const shoppingListEl = document.getElementById("shopping-list")
 const pickedListEl = document.getElementById("picked-list")
 const clearAllEl = document.getElementById("clear-all")
+const searchEl = document.getElementById("search-button")
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value

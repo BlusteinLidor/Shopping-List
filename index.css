@@ -16,6 +16,19 @@ html, body {
     margin: 30px auto;
 }
 
+.top {
+    padding: 10px 10px;
+    margin: 0 auto;
+}
+
+.left-part{
+    float: left;
+}
+
+.right-part{
+    float: right;
+}
+
 img {
     width: 150px;
     margin: 0 auto;
@@ -45,6 +58,16 @@ button {
 }
 
 #clear-all {
+    justify-content:flex-start;
+    background-color: #DCE1EB;
+    font-size: 10px;
+    color: #432000;
+    width: 50px;
+    padding: 5px;
+}
+
+#search-button {
+    
     background-color: #DCE1EB;
     font-size: 10px;
     color: #432000;
