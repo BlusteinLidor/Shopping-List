@@ -25,6 +25,10 @@ addButtonEl.addEventListener("click", function() {
     clearInputFieldEl()
 })
 
+searchEl.addEventListener("click", function() {
+    location.href = "search.html";
+})
+
 onValue(shoppingListInDB, function(snapshot) {
     if (snapshot.exists()) {
         let itemsArray = Object.entries(snapshot.val())
