@@ -26,7 +26,7 @@ addButtonEl.addEventListener("click", function() {
 })
 
 searchEl.addEventListener("click", function() {
-    location.href = "search.html";
+    location.href = "./search.html";
 })
 
 onValue(shoppingListInDB, function(snapshot) {
