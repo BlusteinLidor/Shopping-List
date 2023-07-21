@@ -13,21 +13,32 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div class="top">
+        <div class="top" id="top">
             <div class="left-part">
                 <button id="clear-all">Clear all</button>
             </div>
             <div class="right-part">
-                <button id="search-button"><a href="./search.html">Search</a></button>
+                <button id="search-button"><a href="#top2">Search</a></button>
             </div>
         </div>
-        <div class="container">
+        <div class="container" id="container">
             <img src="assets/cat.png">
             <input type="text" id="input-field" placeholder="Bread">
             <button id="add-button">Add to cart</button>
             <ul id="shopping-list">
             </ul>
             <ul id="picked-list">
+            </ul>
+        </div>
+        <div class="top2" id="top2">
+            <div class="btn-holder">
+                <button id="back-button">Back</button>
+            </div>
+        </div>
+        <div class="container2" id="container2">
+            <img src="assets/mag-glass.png">
+            <input type="text" id="input-field" placeholder="Meat">
+            <ul id="search-list">
             </ul>
         </div>
         <script src="index.js" type="module"></script>

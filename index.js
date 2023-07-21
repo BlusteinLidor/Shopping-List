@@ -16,6 +16,11 @@ const shoppingListEl = document.getElementById("shopping-list")
 const pickedListEl = document.getElementById("picked-list")
 const clearAllEl = document.getElementById("clear-all")
 const searchEl = document.getElementById("search-button")
+const backBtnEl = document.getElementById("back-button")
+
+backBtnEl.addEventListener("click", function() {
+    location.href = "#top";
+})
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
