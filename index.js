@@ -18,15 +18,51 @@ const clearAllEl = document.getElementById("clear-all")
 const searchEl = document.getElementById("search-button")
 const backBtnEl = document.getElementById("back-button")
 
+
 backBtnEl.addEventListener("click", function() {
     location.href = "#top";
 })
 
-addButtonEl.addEventListener("click", function() {
+addButtonEl.addEventListener("click", function(snapshot) {
     let inputValue = inputFieldEl.value
-    
-    push(shoppingListInDB, inputValue)
-    
+    let notInList = true
+
+    onValue(shoppingListInDB, function(snapshot) {
+        if (snapshot.exists()) {
+            let itemsArray = Object.entries(snapshot.val())
+            
+            for(let i = 0; i < itemsArray.length; i++){
+                let currentItem = itemsArray[i]
+                let currentItemID = currentItem[0]
+                let currentItemValue = currentItem[1]
+                if(currentItemValue == inputValue){
+                    notInList = false
+                    break
+                }
+            }   
+        }
+    })
+
+    onValue(pickedListInDB, function(snapshot) {
+        if (snapshot.exists()) {
+            let itemsArray = Object.entries(snapshot.val())
+            
+            for(let i = 0; i < itemsArray.length; i++){
+                let currentItem = itemsArray[i]
+                let currentItemID = currentItem[0]
+                let currentItemValue = currentItem[1]
+                if(currentItemValue == inputValue){
+                    notInList = false
+                    break
+                }
+            }   
+        }
+    })
+
+    if(notInList){
+        push(shoppingListInDB, inputValue)
+    }
+
     clearInputFieldEl()
 })
 
@@ -44,7 +80,7 @@ onValue(shoppingListInDB, function(snapshot) {
             let currentItem = itemsArray[i]
             let currentItemID = currentItem[0]
             let currentItemValue = currentItem[1]
-            
+
             appendItemToShoppingListEl(currentItem)
         }    
     } else {
@@ -132,3 +168,24 @@ clearAllEl.addEventListener("click", function() {
     remove(shoppingListInDB)
     remove(pickedListInDB)
 })
+
+function searchPop(){
+    // Declare variables
+  let input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('search-field');
+  filter = input.value.toUpperCase();
+  ul1 = document.getElementById("shopping-list");
+  ul2 = document.getElementById("picked-list");
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
