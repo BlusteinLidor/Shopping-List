@@ -17,6 +17,7 @@ const pickedListEl = document.getElementById("picked-list")
 const clearAllEl = document.getElementById("clear-all")
 const searchEl = document.getElementById("search-button")
 const backBtnEl = document.getElementById("back-button")
+const searchListEl = document.getElementById("search-list")
 
 
 backBtnEl.addEventListener("click", function() {
@@ -162,6 +163,7 @@ function appendItemToPickedListEl(item) {
     
     pickedListEl.append(newEl)
 }
+  
 
 clearAllEl.addEventListener("click", function() {
     // remove all items
@@ -171,21 +173,44 @@ clearAllEl.addEventListener("click", function() {
 
 function searchPop(){
     // Declare variables
-  let input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('search-field');
-  filter = input.value.toUpperCase();
-  ul1 = document.getElementById("shopping-list");
-  ul2 = document.getElementById("picked-list");
-  li = ul.getElementsByTagName('li');
+  let input, filter, ul1, ul2, li1, li2, a1, a2, i, txtValue1, txtValue2
+  input = document.getElementById('search-field')
+  filter = input.value.toUpperCase()
+  ul1 = document.getElementById("shopping-list")
+  ul2 = document.getElementById("picked-list")
+  li1 = ul1.getElementsByTagName('li')
+  li2 = ul2.getElementsByTagName('li')
+
+  for(i = 0; i < shoppingListEl.length; i++){
+    let newEl = document.createElement("li")
+    newEl.style.backgroundColor = "#97A7B3"
+    newEl.style.color = "black"
+    txtValue1 = shoppingListEl[i].textContent
+    newEl.textContent = txtValue1
+    shoppingListEl.append(newEl)
+  }
 
   // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
+  /*for (i = 0; i < li1.length || i < li2.length; i++) {
+    if(i < li1.length){
+        a1 = li1[i];
     }
-  }
+    if(i < li2.length){
+        a2 = li2[i];
+    }
+    txtValue1 = a1.textContent || a1.innerText;
+    txtValue2 = a2.textContent || a2.innerText;
+    let newEl = document.createElement("li")
+    txtValue = newEl.textContent
+    
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        searchListEl.append(newEl)
+      li1[i].style.display = "";
+      li2[i].style.display = "";
+    } else {
+      li1[i].style.display = "none";
+      li2[i].style.display = "none";
+    }
+    searchListEl.append(newEl)
+  }*/
 }
