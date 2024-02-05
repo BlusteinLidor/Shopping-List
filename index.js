@@ -67,10 +67,6 @@ addButtonEl.addEventListener("click", function(snapshot) {
     clearInputFieldEl()
 })
 
-//searchEl.addEventListener("click", function() {
-//    location.href = "./search.html";
-//})
-
 onValue(shoppingListInDB, function(snapshot) {
     if (snapshot.exists()) {
         let itemsArray = Object.entries(snapshot.val())
@@ -119,6 +115,8 @@ function clearInputFieldEl() {
     inputFieldEl.value = ""
 }
 
+
+//TODO check if the function names are not switched by mistake
 function appendItemToShoppingListEl(item) {
     let itemID = item[0]
     let itemValue = item[1]
@@ -133,6 +131,14 @@ function appendItemToShoppingListEl(item) {
         let inputValue = newEl.textContent
         push(pickedListInDB, inputValue)
         // remove the item from shoppingList
+        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
+        remove(exactLocationOfItemInDB)
+        console.log("hey")
+    })
+
+    newEl.addEventListener("contextmenu", function() {
+        // remove the item
+        console.log("removed")
         let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
         remove(exactLocationOfItemInDB)
     })
@@ -157,6 +163,12 @@ function appendItemToPickedListEl(item) {
         let inputValue = newEl.textContent
         push(shoppingListInDB, inputValue)
         // remove the item from pickedList
+        let exactLocationOfItemInDB = ref(database, `pickedList/${itemID}`)
+        remove(exactLocationOfItemInDB)
+    })
+
+    newEl.addEventListener("contextmenu", function() {
+        // remove the item
         let exactLocationOfItemInDB = ref(database, `pickedList/${itemID}`)
         remove(exactLocationOfItemInDB)
     })
@@ -189,28 +201,4 @@ function searchPop(){
     newEl.textContent = txtValue1
     shoppingListEl.append(newEl)
   }
-
-  // Loop through all list items, and hide those who don't match the search query
-  /*for (i = 0; i < li1.length || i < li2.length; i++) {
-    if(i < li1.length){
-        a1 = li1[i];
-    }
-    if(i < li2.length){
-        a2 = li2[i];
-    }
-    txtValue1 = a1.textContent || a1.innerText;
-    txtValue2 = a2.textContent || a2.innerText;
-    let newEl = document.createElement("li")
-    txtValue = newEl.textContent
-    
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        searchListEl.append(newEl)
-      li1[i].style.display = "";
-      li2[i].style.display = "";
-    } else {
-      li1[i].style.display = "none";
-      li2[i].style.display = "none";
-    }
-    searchListEl.append(newEl)
-  }*/
 }
